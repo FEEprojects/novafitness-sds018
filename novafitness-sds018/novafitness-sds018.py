@@ -45,7 +45,7 @@ class NovafitnessException(Exception):
 
 class Novafitness(object):
     """
-        Actual interface to the PMS5003 sensor
+        Actual interface to the Novafitness sensor
     """
     def __init__(
             self, port=DEFAULT_SERIAL_PORT, baud=DEFAULT_BAUD_RATE,
@@ -55,7 +55,7 @@ class Novafitness(object):
         """
             Setup the interface for the sensor
         """
-        self.logger = logging.getLogger("PMS5003 Interface")
+        self.logger = logging.getLogger("SDS018 Interface")
         logging.basicConfig(
             format='%(asctime)s - %(name)s - %(lineno)d - %(levelname)s - %(message)s')
         self.logger.setLevel(log_level)

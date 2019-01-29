@@ -2,7 +2,7 @@
     Wrapper classes for the Novafitness SDS018.
     Florentin Bulot
     15/01/2019
-    based on https://github.com/FEEprojects/plantower 
+    based on https://github.com/FEEprojects/plantower
 """
 
 import logging
@@ -29,8 +29,8 @@ class NovafitnessReading(object):
             an object containing the data
         """
         self.timestamp = datetime.utcnow()
-        self.pm10 = (line[5] * 256 + line[4])/10
-        self.pm25 = (line[3] * 256 + line[2])/10
+        self.pm10 = (line[5] << 8 + line[4]) / 10
+        self.pm25 = (line[3] << 8 + line[2]) / 10
 
     def __str__(self):
         return (
@@ -74,7 +74,7 @@ class Novafitness(object):
             self.logger.debug("Port Opened Successfully")
         except SerialException as exp:
             self.logger.error(str(exp))
-            raise PlantowerException(str(exp))
+            raise Novafitness(str(exp))
 
     def set_log_level(self, log_level):
         """

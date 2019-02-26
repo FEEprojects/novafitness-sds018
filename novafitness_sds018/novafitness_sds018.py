@@ -2,7 +2,7 @@
     Wrapper classes for the Novafitness SDS018.
     Florentin Bulot
     15/01/2019
-    based on https://github.com/FEEprojects/plantower 
+    based on https://github.com/FEEprojects/plantower
 """
 
 import logging
@@ -29,8 +29,8 @@ class NovafitnessReading(object):
             an object containing the data
         """
         self.timestamp = datetime.utcnow()
-        self.pm10 = (line[5] * 256 + line[4])/10
-        self.pm25 = (line[3] * 256 + line[2])/10
+        self.pm10 = ((line[5] << 8) + line[4]) / 10
+        self.pm25 = ((line[3] << 8) + line[2]) / 10
 
     def __str__(self):
         return (
@@ -88,7 +88,7 @@ class Novafitness(object):
             to verify that the data recived is correct
         """
         calc = 0
-        calc = (recv[2]+recv[3]+recv[4]+recv[5]+recv[6]+recv[7])%2
+        calc = (recv[2] + recv[3] + recv[4] + recv[5] + recv[6] + recv[7]) % 256
         self.logger.debug(calc)
         sent = recv[-2] # Combine the 2 bytes together
         if sent != calc:

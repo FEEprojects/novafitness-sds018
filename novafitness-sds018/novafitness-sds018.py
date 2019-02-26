@@ -74,7 +74,7 @@ class Novafitness(object):
             self.logger.debug("Port Opened Successfully")
         except SerialException as exp:
             self.logger.error(str(exp))
-            raise PlantowerException(str(exp))
+            raise NovafitnessException(str(exp))
 
     def set_log_level(self, log_level):
         """

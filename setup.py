@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="novafitness-sds018",
-    version="0.0.1",
+    version="0.0.2",
     author="Florentin Bulot",
     author_email="f.bulot@soton.ac.uk",
     description="An interface for novafitness SDS018 particulate matter sensors",

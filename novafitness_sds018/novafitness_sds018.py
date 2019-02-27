@@ -28,7 +28,7 @@ class NovafitnessReading(object):
             Takes a line from the Novafitness serial port and converts it into
             an object containing the data
         """
-        self.timestamp = datetime.utcnow()
+        self.timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
         self.pm10 = round(((line[5] << 8) + line[4]) / 10, 1)
         self.pm25 = round(((line[3] << 8) + line[2]) / 10, 1)
 

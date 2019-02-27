@@ -29,8 +29,8 @@ class NovafitnessReading(object):
             an object containing the data
         """
         self.timestamp = datetime.utcnow()
-        self.pm10 = ((line[5] << 8) + line[4]) / 10
-        self.pm25 = ((line[3] << 8) + line[2]) / 10
+        self.pm10 = round(((line[5] << 8) + line[4]) / 10, 1)
+        self.pm25 = round(((line[3] << 8) + line[2]) / 10, 1)
 
     def __str__(self):
         return (
@@ -120,4 +120,4 @@ class Novafitness(object):
                     self._verify(recv) # verify the checksum
                     return NovafitnessReading(recv) # convert to reading object
             #If the character isn't what we are expecting loop until timeout
-        raise NovafitnessException("No message recieved")
+        raise NovafitnessException("No message received")

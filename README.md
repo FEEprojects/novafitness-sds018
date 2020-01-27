@@ -5,3 +5,9 @@ A basic python interface for interacting with the novafitness PM sensors.  This 
 
 
 This wrapper is based on: https://github.com/FEEprojects/plantower
+
+The following persons have contributed to this library:
+ * Philip J. Basford
+ * Florentin M. J. Bulot
+ * Simon J. Cox
+ * Steven J. J. Ossont
